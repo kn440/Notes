@@ -14,16 +14,19 @@ def start():
          notes_function.list()
          start()
     elif choise == "3":
-         number = input("Введите номер заметки: ")
+         number = int(input("Введите номер заметки: "))
+
          notes_function.read(number)
          start()
     elif choise == "4":
-         note= input("Введите текст заметки: ")
-         notes_function.change(note)
+         number= input("Введите номер заметки: ")
+         name = input("Введите новое название заметки: ")
+         note = input("Введите новый текст заметки: ")
+         notes_function.change(number,name,note)
          start()
     elif choise == "5":
-         name = input("Введите номер заметки: ")
-         notes_function.delete(name)
+         number = input("Введите номер заметки: ")
+         notes_function.delete(number)
          start()
     elif choise == "6":
          print("Выход из программы")
