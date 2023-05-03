@@ -11,7 +11,8 @@ def start():
          notes_function.add(name,note)
          start()
     elif choise == "2":
-         notes_function.list()
+         yn = input("Покать список, сортированный по дате? y/n ")
+         notes_function.list(yn)
          start()
     elif choise == "3":
          number = int(input("Введите номер заметки: "))

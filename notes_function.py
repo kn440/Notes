@@ -1,4 +1,5 @@
 import csv
+import operator
 from datetime import date
 
 filename = "notes.csv"
@@ -19,12 +20,20 @@ def add(name, note):
         file_writer.writerow([rowcount(filename), name, note,current_date])
 
 
-def list():
-    with open(filename, encoding='utf-8') as r_file:
-        file_reader = csv.reader(r_file, delimiter=";", lineterminator="\r")
-        for line in file_reader:
-            if line[0] != "":
-                print(f' {", ".join(line)}')
+def list(yn):
+    if yn=="n":
+        with open(filename, mode="r", encoding='utf-8') as r_file:
+            file_reader = csv.reader(r_file, delimiter=";", lineterminator="\r")
+            for line in file_reader:
+                if line[0] != "":
+                    print(f' {", ".join(line)}')
+    elif yn=="y":
+        with open(filename, mode="r", encoding='utf-8') as r_file:
+            file_reader = csv.reader(r_file, delimiter=";", lineterminator="\r")
+            sortedlist = sorted(file_reader, key=operator.itemgetter(3),reverse=True)
+            for line in sortedlist:
+                if line[0] != "":
+                    print(f' {", ".join(line)}')
 
 def read(number):
      with open(filename, encoding='utf-8') as r_file:
